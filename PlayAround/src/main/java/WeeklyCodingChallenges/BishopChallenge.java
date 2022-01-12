@@ -43,7 +43,7 @@ public class BishopChallenge {
 		int finishParity = finishRC % 2;
 		
 		if (startParity != finishParity) {
-			System.out.println("The biship cannot make the move. The start and finish squares are different colors.");
+			System.out.println("The bishop cannot make the move. The start and finish squares are different colors.");
 			return false;
 		}
 		
