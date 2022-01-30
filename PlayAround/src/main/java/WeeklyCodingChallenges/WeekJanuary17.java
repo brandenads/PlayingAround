@@ -62,6 +62,41 @@ public class WeekJanuary17 {
 		
 		return true;
 	}
+	
+	public static String maxOccur(String text) {
+		
+		//keep an array of Ascii indexes. The highest
+		//printable character is 126.
+		int[] asciiCount = new int[127];
+		
+		//Count the characters
+		for(int i=0; i<text.length(); i++)
+			asciiCount[(int)text.charAt(i)]++;
+		
+		//Find the max
+		int maxNum = 0;
+		for(int i=0; i<127; i++)
+			if (asciiCount[i]>maxNum) maxNum = asciiCount[i];
+		
+		//Build the return string
+		String returnString = "";
+		if (maxNum > 1) {
+			for(int i=0; i<127; i++) {
+				if(asciiCount[i] == maxNum) {
+					returnString += " ,"+(char)i;
+				}
+			}
+			returnString = returnString.substring(2); //kill off first comma
+		} else
+			returnString = "No Repetition";
+				
+		
+		return returnString;
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		
 		System.out.println(totalPoints(new String[]{"cat", "create", "sat"}, "caster")); //Should be 2
@@ -107,7 +142,16 @@ public class WeekJanuary17 {
 			{1, 1, 1},
 			{2, 2, 2}
 			}));
-	}
+		
+		System.out.println(maxOccur("Computer Science"));
+		System.out.println(maxOccur("Edabit"));
+		System.out.println(maxOccur("system admin"));
+		System.out.println(maxOccur("the quick brown fox jumps over the lazy dog"));
+		System.out.println(maxOccur("thequickbrownfoxjumpsoverthelazydog"));
+		
+		
+		
+	} //end of main function
 	
 	
 }
