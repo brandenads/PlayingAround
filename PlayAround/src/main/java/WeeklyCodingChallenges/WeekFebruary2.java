@@ -1,5 +1,7 @@
 package WeeklyCodingChallenges;
 
+import java.util.Arrays;
+
 public class WeekFebruary2 {
 
 	public static boolean isHeteromecic(int number) {
@@ -95,6 +97,43 @@ public class WeekFebruary2 {
 		return ciphertext.toString();
 	}
 	
+	public static boolean isMagicSquare (int[][] square) {
+		
+		int rowSum=0; //row sum (-)
+		int colSum=0; //column sum (|)
+		int posSum=0; //positive sloped diagonal (/)
+		int negSum=0; //negatively sloped diagonal (\)
+		int magicNum = 0; //the target sum
+		int size = square.length; //the size of the magic square
+				
+		for (int outer=0; outer<size; outer++) {
+			
+			negSum += square[outer][outer]; //negatively sloped diagonal
+			posSum += square[outer][(size-1)-outer]; //positively sloped diagonal
+			
+			rowSum=0;
+			colSum=0;
+			for(int inner=0; inner<size; inner++) {
+				
+				rowSum += square[outer][inner]; //Add row sum (-)
+				colSum += square[inner][outer]; //Add column sum (|)
+			
+			}
+			//System.out.println("Row "+outer+" sum: "+rowSum);
+			//System.out.println("Column "+outer+" sum: "+colSum);
+			if (outer == 0) magicNum = rowSum; //Set magic number the first time.
+			if (rowSum != magicNum) return false;
+			if (colSum != magicNum) return false;
+			
+		}
+		//System.out.println("\\ Sum: "+negSum);
+		//System.out.println("/ Sum:  "+posSum);
+		if (negSum != magicNum) return false;
+		if (posSum != magicNum) return false;
+		
+		return true;
+	}
+	
 	public static void main( String[] args) {
 		
 		System.out.println("0 is heteromecic: "+isHeteromecic(0));
@@ -127,8 +166,39 @@ public class WeekFebruary2 {
 		System.out.println("Christmas is the 25th of December in atbash: "+atbash("Christmas is the 25th of December"));
 		System.out.println("Aa Bb Cc Dd Ee ... Zz Yy Xx Ww Vv in atbash: "+atbash("Aa Bb Cc Dd Ee ... Zz Yy Xx Ww Vv"));
 		
+		System.out.println();
+		
+		int[][] a3square = new int[][] {
+			{ 2, 7, 6 },
+			{ 9, 5, 1 },
+			{ 4, 3, 8 }
+			};
+			System.out.println(Arrays.deepToString(a3square)+" is a magic square: "+isMagicSquare(a3square));
+		
+		int[][] a4square = new int[][] {
+			{ 16, 3, 2, 13 },
+			{ 5, 10, 11, 8 },
+			{ 9, 6, 7, 12 },
+			{ 4, 15, 14, 1 }
+			};
+			System.out.println(Arrays.deepToString(a4square)+" is a magic square: "+isMagicSquare(a4square));
+		
+		int[][] another4square = new int[][] {
+				{ 1, 14, 14, 4 },
+				{ 11, 7, 6, 9 },
+				{ 8, 11, 10, 5 },
+				{ 13, 2, 3, 15 }
+				};
+				System.out.println(Arrays.deepToString(another4square)+" is a magic square: "+isMagicSquare(another4square));
+		
+		int[][] fixed4square = new int[][] {
+			{ 1, 14, 15, 4 },
+			{ 12, 7, 6, 9 },
+			{ 8, 11, 10, 5 },
+			{ 13, 2, 3, 16 }
+			};
+			System.out.println(Arrays.deepToString(fixed4square)+" is a magic square: "+isMagicSquare(fixed4square));
+					
 	}
-	
-	
 	
 }
