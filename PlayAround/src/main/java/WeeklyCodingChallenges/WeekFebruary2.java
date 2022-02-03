@@ -97,29 +97,35 @@ public class WeekFebruary2 {
 	
 	public static void main( String[] args) {
 		
-		System.out.println(isHeteromecic(0));
-		System.out.println(isHeteromecic(2));
-		System.out.println(isHeteromecic(7));
-		System.out.println(isHeteromecic(110));
-		System.out.println(isHeteromecic(136));
-		System.out.println(isHeteromecic(156));
+		System.out.println("0 is heteromecic: "+isHeteromecic(0));
+		System.out.println("2 is heteromecic: "+isHeteromecic(2));
+		System.out.println("7 is heteromecic: "+isHeteromecic(7));
+		System.out.println("110 is heteromecic: "+isHeteromecic(110));
+		System.out.println("136 is heteromecic: "+isHeteromecic(136));
+		System.out.println("156 is heteromecic: "+isHeteromecic(156));
 		
-		System.out.println(happy(203));
-		System.out.println(happy(11));
-		System.out.println(happy(107));
-		System.out.println(happy(860));
+		System.out.println();
 		
-		System.out.println(is_disarium(75));
-		System.out.println(is_disarium(135));
-		System.out.println(is_disarium(544));
-		System.out.println(is_disarium(518));
-		System.out.println(is_disarium(466));
-		System.out.println(is_disarium(8));
+		System.out.println("203 is happy: "+happy(203));
+		System.out.println("11 is happy: "+happy(11));
+		System.out.println("107 is happy: "+happy(107));
+		System.out.println("860 is happy: "+happy(860));
 		
-		System.out.println(atbash("apple"));
-		System.out.println(atbash("Hello World!"));
-		System.out.println(atbash("Christmas is the 25th of December"));
-		System.out.println(atbash("Aa Bb Cc Dd Ee ... Zz Yy Xx Ww Vv"));
+		System.out.println();
+		
+		System.out.println("75 is disarium: "+is_disarium(75));
+		System.out.println("135 is disarium: "+is_disarium(135));
+		System.out.println("544 is disarium: "+is_disarium(544));
+		System.out.println("518 is disarium: "+is_disarium(518));
+		System.out.println("466 is disarium: "+is_disarium(466));
+		System.out.println("8 is disarium: "+is_disarium(8));
+		
+		System.out.println();
+		
+		System.out.println("apple in atbash: "+atbash("apple"));
+		System.out.println("Hello World! in atbash: "+atbash("Hello World!"));
+		System.out.println("Christmas is the 25th of December in atbash: "+atbash("Christmas is the 25th of December"));
+		System.out.println("Aa Bb Cc Dd Ee ... Zz Yy Xx Ww Vv in atbash: "+atbash("Aa Bb Cc Dd Ee ... Zz Yy Xx Ww Vv"));
 		
 	}
 	
