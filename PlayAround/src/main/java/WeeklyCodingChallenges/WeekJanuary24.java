@@ -55,18 +55,21 @@ public class WeekJanuary24 {
 
 	public static void main(String[] args) {
 		
+		System.out.println("Interview Questions");
 		System.out.println(interview(new int [] { 5, 5, 10, 10, 15, 15, 20, 20 }, 120));
 		System.out.println(interview(new int [] { 2, 3, 8, 6, 5, 12, 10, 18 }, 64) );
 		System.out.println(interview(new int [] { 5, 5, 10, 10, 25, 15, 20, 20 }, 120));
 		System.out.println(interview(new int [] { 5, 5, 10, 10, 15, 15, 20 }, 120));
 		System.out.println(interview(new int [] { 5, 5, 10, 10, 15, 15, 20, 20 }, 130));
 		
+		System.out.println("Encryption");
 		System.out.println(encrypt("apple"));
 		System.out.println(encrypt("banana"));
 		System.out.println(encrypt("karaca"));
 		System.out.println(encrypt("burak"));
 		System.out.println(encrypt("alpaca"));
 		
+		System.out.println("Password Validation");
 		System.out.println(validate("121317"));
 		System.out.println(validate("1234"));
 		System.out.println(validate("45135"));
