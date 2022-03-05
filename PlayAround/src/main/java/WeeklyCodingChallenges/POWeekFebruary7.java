@@ -36,7 +36,7 @@ public class POWeekFebruary7 {
 	
 	
 /*		
-		An attempt I made using an alternate method, until it got too complex and bug-ridden!
+		An attempt I made for "ascending" method using an alternate method, until it got too complex and bug-ridden!
 		For my personal use only, you can ignore this. I know if this was enterprise code, this would
 		be completely removed from the codefile to be professional.
 
