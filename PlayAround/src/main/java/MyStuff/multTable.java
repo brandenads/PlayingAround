@@ -16,7 +16,7 @@ public class multTable {
 		
 		
 		//largest size of the multiplication table (value of n)
-		int maxTable = 100; 
+		int maxTable = 3000; 
 		
 		//Variables for number frequency counters
 		int occurFrequent=0;	//Number of occurrences of the most frequent number in the table
@@ -26,6 +26,7 @@ public class multTable {
 		int numberFrequent=0;	//Count of how many numbers are most frequent in the table
 		int onlyOnce=0;			//Count of numbers occurring only once
 		int moreThanOnce=0;		//Count of numbers occurring more than once
+		int distinctTerms=0;	//Count of distinct terms in the multiplication table
 		
 		int[] numberCount = new int[(maxTable * maxTable) +1];
 		
@@ -65,6 +66,9 @@ public class multTable {
 		moreThanOnceFile.createNewFile();
 		FileWriter moreThanOnceWriter = new FileWriter(moreThanOnceFile);
 		
+		File distinctTermsFile = new File(myPath+"NumberOfDistinctTerms.txt");
+		distinctTermsFile.createNewFile();
+		FileWriter distinctTermsWriter = new FileWriter(distinctTermsFile);
 		
 		//Print progress counter.
 		System.out.print("Starting: 0%");
@@ -90,6 +94,7 @@ public class multTable {
 			numberFrequent=0;	//Count of how many numbers are most frequent in the table
 			onlyOnce=0;			//Count of numbers occurring only once
 			moreThanOnce=0;		//Count of numbers occurring more than once
+			distinctTerms=0;	//Count of distinct terms in the multiplication table
 
 			
 			//First, find the number of times the most frequent number appears
@@ -104,6 +109,9 @@ public class multTable {
 				
 				//Find the amount of numbers occurring more than once.
 				if (numberCount[m] > 1) moreThanOnce++; 
+				
+				//Find the amount of distinct terms.
+				if (numberCount[m] > 0) distinctTerms++;
 				
 				//Find statistics on the most frequently occurring numbers
 				if (numberCount[m] == occurFrequent) {
@@ -155,6 +163,8 @@ public class multTable {
 			
 			moreThanOnceWriter.write(currentSize+" "+moreThanOnce+"\n");
 			
+			distinctTermsWriter.write(currentSize+" "+distinctTerms+"\n");
+			
 
 				
 		}
@@ -182,6 +192,9 @@ public class multTable {
 		moreThanOnceWriter.flush();
 		moreThanOnceWriter.close();
 		
+		distinctTermsWriter.flush();
+		distinctTermsWriter.close();
+		
 		System.out.println();
 		
 		
@@ -192,6 +205,7 @@ public class multTable {
 		doubleCheck(myPath,"NumberOfOccurrences.txt","NumberOfOccurrences-b057142.txt");
 		doubleCheck(myPath,"OccurringOnlyOnce.txt","OccurringOnlyOnce-b064047.txt");
 		doubleCheck(myPath,"SmallestOfMostFrequent.txt","SmallestOfMostFrequent-b057144.txt");
+		doubleCheck(myPath,"NumberOfDistinctTerms.txt","NumberOfDistinctTerms-b027424.txt");
 		
 		//The number of terms occurring more than once is not in the OEIS.
 		//But the number of distinct terms is in the OEIS.
@@ -212,9 +226,9 @@ public class multTable {
 		FileReader distinctTermsFR = new FileReader(directory+distinctTerms);
 		BufferedReader distinctTermsFile = new BufferedReader(distinctTermsFR);
 		
-		int[] moreThanOnceValues = new int[10010];
-		int[] onlyOnceValues = new int[10010];
-		int[] distinctTermsValues = new int[10010];
+		int[] moreThanOnceValues = new int[20010];
+		int[] onlyOnceValues = new int[20010];
+		int[] distinctTermsValues = new int[20010];
 		
 		String nextLine = "0 -1";
 		
@@ -285,7 +299,7 @@ public class multTable {
 		BufferedReader expectedFile = new BufferedReader(expectedFR);
 		
 		String nextLine = "0 -1";
-		int[] expectedValues = new int[10010];
+		int[] expectedValues = new int[20010];
 		int indexExpected = 0;
 		
 		
