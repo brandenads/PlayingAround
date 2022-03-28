@@ -1,0 +1,51 @@
+	private static boolean moreThanOnceCheck(String directory, String moreThanOnce, String onlyOnce) throws IOException {
+		
+		FileReader moreThanOnceFR = new FileReader(directory+moreThanOnce);
+		BufferedReader moreThanOnceFile = new BufferedReader(moreThanOnceFR);
+		
+		FileReader onlyOnceFR = new FileReader(directory+onlyOnce);
+		BufferedReader onlyOnceFile = new BufferedReader(onlyOnceFR);
+		
+		int[] moreThanOnceValues = new int[10010];
+		int[] onlyOnceValues = new int[10010];
+		String nextLine = "0 -1";
+		
+		//Read values that occur more than once
+		while ((nextLine = moreThanOnceFile.readLine()) != null) {
+			
+			//Parse read line into integers
+			String[] lineVals = nextLine.split(" ");
+			int index = Integer.parseInt(lineVals[0]);
+			int value = Integer.parseInt(lineVals[1]);
+			
+			moreThanOnceValues[index] = value;
+			
+		}
+		
+		//Read values that occur only once
+		//Read values that occur more than once
+		while ((nextLine = onlyOnceFile.readLine()) != null) {
+			
+			//Parse read line into integers
+			String[] lineVals = nextLine.split(" ");
+			int index = Integer.parseInt(lineVals[0]);
+			int value = Integer.parseInt(lineVals[1]);
+			
+			onlyOnceValues[index] = value;
+			
+		}
+		
+		for(int i=1; i<100; i++) {
+			
+			System.out.println("Index: "+i+" more than once: "+moreThanOnceValues[i]+" only once: "+onlyOnceValues[i]+
+					" squared: "+i*i+" add: "+(moreThanOnceValues[i]+onlyOnceValues[i]));
+		}
+		
+		moreThanOnceFile.close();
+		moreThanOnceFR.close();
+		onlyOnceFile.close();
+		onlyOnceFR.close();
+		
+		return false;
+		
+	}
