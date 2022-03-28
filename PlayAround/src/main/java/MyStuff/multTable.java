@@ -220,36 +220,24 @@ public class multTable {
 		
 		//Read in all three files, and save to arrays.
 		while ((nextLine = moreThanOnceFile.readLine()) != null) {
-			
-			//Parse read line into integers
 			String[] lineVals = nextLine.split(" ");
 			int index = Integer.parseInt(lineVals[0]);
 			int value = Integer.parseInt(lineVals[1]);
-			
 			moreThanOnceValues[index] = value;
-			
 		}
-
 		while ((nextLine = onlyOnceFile.readLine()) != null) {
-			
-			//Parse read line into integers
 			String[] lineVals = nextLine.split(" ");
 			int index = Integer.parseInt(lineVals[0]);
 			int value = Integer.parseInt(lineVals[1]);
-			
 			onlyOnceValues[index] = value;
-			
 		}
-		
+		while ((nextLine = distinctTermsFile.readLine()).substring(0, 1).equals("#")) {}
+		distinctTermsValues[Integer.parseInt(nextLine.split(" ")[0])] = Integer.parseInt(nextLine.split(" ")[1]);
 		while ((nextLine = distinctTermsFile.readLine()) != null) {
-			
-			//Parse read line into integers
 			String[] lineVals = nextLine.split(" ");
 			int index = Integer.parseInt(lineVals[0]);
-			int value = Integer.parseInt(lineVals[1]);
-			
-			distinctTermsValues[index] = value;
-			
+			int value = Integer.parseInt(lineVals[1]);	
+			distinctTermsValues[index] = value;	
 		}
 		
 		
