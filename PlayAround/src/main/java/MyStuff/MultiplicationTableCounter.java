@@ -2,21 +2,22 @@
 This program is used for numerous sequences related to multiplication tables: 
 
 OEIS	Name
-057143	Largest of the most frequently occurring numbers in a 1-to-n multiplication table
-057144	Smallest of the most frequently occurring numbers in a 1-to-n multiplication table
-064048	Number of most frequently occurring numbers in a 1-to-n multiplication table
-057142	Occurrences of the most frequently occurring number in a 1-to-n multiplication table
-064047	Number of terms appearing only once in a 1-to-n multiplication table
-027424	Number of distinct terms in a 1-to-n multiplication table
+057143	Largest of the most frequently occurring numbers in 1-to-n multiplication table.
+057144	Smallest of the most frequently occurring numbers in 1-to-n multiplication table.
+064048	Number of most frequently occurring numbers in the 1-to-n multiplication table.
+057142	Occurrences of most frequently occurring number in 1-to-n multiplication table.
+064047	Number of numbers only appearing once in 1-to-n multiplication table.
+027424	Number of distinct products ij with 1 <= i, j <= n (number of distinct terms in n X n multiplication table).
 ------	Number of terms appearing more than once in a 1-to-n multiplication table
 
 This program also lists each of the most frequent number in a multiplication table in a file
 called ListOfMostFrequent.txt. Cannot be put into the OEIS, but is included for curiosity.
 
 This is a Java program, created in Eclipse. To run, follow these steps
-1.) Make sure the files that end with -b###### exist and are named properly.
-2.) Make sure myPath is set to a valid location in your directory tree, ending with a slash.
-3.) Compile and run this program.
+1.) Create an empty directory for the project to run in, and set myPath to its fully qualified name (see example), ending with a slash.
+The default is c:\MultiplicationTableFiles, as shown in the code below.
+2.) Download the b-files for all of the above sequences. Do not change their name..
+3.) Compile and run this Java program.
 
 If you just want to double check, you can comment out the calculation code in the main module. 
 the places that need to be commented out are in the comments.
@@ -24,7 +25,7 @@ the places that need to be commented out are in the comments.
 This program is written to focus on the necessary logic, not to handle programming concerns.
 This keeps the code small and understandable. It does NOT check for validity of input files,
 try/catch exception handling, etc. 
-//not be right
+
 */
 
 package MyStuff;
@@ -42,7 +43,7 @@ public class MultiplicationTableCounter {
 		//----------------------------------Comment out from here ... --------------------------------------------------------
 		
 		//largest size of the multiplication table (value of n)
-		int maxTable = 2000; 
+		int maxTable = 200; 
 		
 		//Variables for number frequency counters
 		int occurFrequent=0;	//Number of occurrences of the most frequent number in the table
@@ -60,7 +61,7 @@ public class MultiplicationTableCounter {
 		
 		//---------------------------Set this to a valid folder on your directory tree!---------------------------------------
 		//---------------------------b###### files should be in this directory for proper double-checking---------------------
-		String myPath = "C:\\Users\\brand\\git\\PlayingAround\\PlayAround\\src\\main\\java\\MyStuff\\MultiplicationTableFiles\\";
+		String myPath = "C:\\MultiplicationTableFiles\\";
 		
 		System.out.println("Files are being stored and read in this location: "+myPath);
 		
@@ -235,18 +236,18 @@ public class MultiplicationTableCounter {
 		//--------------------------------------------... to here to skip computation, and go straight to the tests-----------------------
 		
 		//Test the results for sequences already in the OEIS
-		doubleCheck(myPath,"NumberOfOccurrences.txt","NumberOfOccurrences-b057142.txt");	
-		doubleCheck(myPath,"LargestOfMostFrequent.txt","LargestOfMostFrequent-b057143.txt");
-		doubleCheck(myPath,"SmallestOfMostFrequent.txt","SmallestOfMostFrequent-b057144.txt");
-		doubleCheck(myPath,"NumberOfMostFrequent.txt","NumberOfMostFrequent-b064048.txt");
-		doubleCheck(myPath,"OccurringOnlyOnce.txt","OccurringOnlyOnce-b064047.txt");
-		doubleCheck(myPath,"NumberOfDistinctTerms.txt","NumberOfDistinctTerms-b027424.txt");
+		doubleCheck(myPath,"NumberOfOccurrences.txt","b057142.txt");	
+		doubleCheck(myPath,"LargestOfMostFrequent.txt","b057143.txt");
+		doubleCheck(myPath,"SmallestOfMostFrequent.txt","b057144.txt");
+		doubleCheck(myPath,"NumberOfMostFrequent.txt","b064048.txt");
+		doubleCheck(myPath,"OccurringOnlyOnce.txt","b064047.txt");
+		doubleCheck(myPath,"NumberOfDistinctTerms.txt","b027424.txt");
 		
 		//The number of terms occurring more than once is not in the OEIS.
 		//But the number of distinct terms is in the OEIS.
 		//To check this, check the truth of the following equation:
 		// (numbers that occur once) + (numbers that occur more than once) = (number of distinct terms)
-		moreThanOnceCheck(myPath,"OccurringMoreThanOnce.txt","OccurringOnlyOnce.txt","NumberOfDistinctTerms-b027424.txt", 10000);
+		moreThanOnceCheck(myPath,"OccurringMoreThanOnce.txt","OccurringOnlyOnce.txt","b027424.txt", 10000);
 		
 	} //end of main
 	
