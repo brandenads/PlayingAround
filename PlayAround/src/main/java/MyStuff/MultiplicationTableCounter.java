@@ -298,7 +298,7 @@ public class MultiplicationTableCounter {
 			if (moreThanOnceValues[i] != 0 && onlyOnceValues[i] != 0 && distinctTermsValues[i] != 0) {
 			if (moreThanOnceValues[i] + onlyOnceValues[i] != distinctTermsValues[i]) {
 				
-				System.out.print("The "+moreThanOnce+" double check test FAILED. ");
+				System.out.print("The "+moreThanOnce+" double check has FAILED. ");
 				System.out.println("Index: "+i+" more than once: "+moreThanOnceValues[i]+" only once: "+onlyOnceValues[i]+" distinct: "+distinctTermsValues[i]+" add: "+(moreThanOnceValues[i]+onlyOnceValues[i]));
 				
 				distinctTermsFile.close();
@@ -320,7 +320,7 @@ public class MultiplicationTableCounter {
 		onlyOnceFile.close();
 		onlyOnceFR.close();
 		
-		System.out.print("The "+moreThanOnce+" double check test PASSED. ");
+		System.out.print("The "+moreThanOnce+" double check has PASSED. ");
 		
 		return true;
 		
