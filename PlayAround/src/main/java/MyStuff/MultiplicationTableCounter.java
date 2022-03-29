@@ -35,14 +35,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class multTable {
+public class MultiplicationTableCounter {
 
 	public static void main(String[] args) throws IOException {
 		
 		//----------------------------------Comment out from here ... --------------------------------------------------------
 		
 		//largest size of the multiplication table (value of n)
-		int maxTable = 3000; 
+		int maxTable = 2000; 
 		
 		//Variables for number frequency counters
 		int occurFrequent=0;	//Number of occurrences of the most frequent number in the table
@@ -56,21 +56,19 @@ public class multTable {
 		
 		int[] numberCount = new int[(maxTable * maxTable) +1];
 		
-		//Create the files needed to write files
-		
-		//---------------------------------------------------------------------------------------------------------------
-		//---------------------------Set this to a valid, empty folder on your directory tree!---------------------------
-		String myPath = "C:\\Users\\brand\\git\\PlayingAround\\PlayAround\\src\\main\\java\\MyStuff\\MultiplicationTableFiles\\";
 
 		
+		//---------------------------Set this to a valid folder on your directory tree!---------------------------------------
+		//---------------------------b###### files should be in this directory for proper double-checking---------------------
+		String myPath = "C:\\Users\\brand\\git\\PlayingAround\\PlayAround\\src\\main\\java\\MyStuff\\MultiplicationTableFiles\\";
+		
+		System.out.println("Files are being stored and read in this location: "+myPath);
+		
+		//Create the files needed to write files	
 		File occurFrequentFile = new File(myPath+"NumberOfOccurrences.txt");
 		occurFrequentFile.createNewFile();
 		FileWriter occurFrequentWriter = new FileWriter(occurFrequentFile);
-		
-		//Print location of output file
-		System.out.println("Files are being stored in the following location: "+myPath);
-
-		
+	
 		File listFrequentFile = new File(myPath+"ListOfMostFrequent.txt");
 		listFrequentFile.createNewFile();
 		FileWriter listFrequentWriter = new FileWriter(listFrequentFile);
@@ -105,6 +103,7 @@ public class multTable {
 		//Iterate the size of the multiplication table (n)
 		for(int currentSize=1; currentSize<=maxTable; currentSize++) {
 			
+			/* ----- The old way -------------------------
 			//Erase only enough of the numberCount array as needed.
 			for(int ee=1; ee<=(currentSize*currentSize); ee++)
 				numberCount[ee]=0;
@@ -113,7 +112,14 @@ public class multTable {
 			for (int i=1; i<=currentSize; i++)
 				for (int j=1; j<=currentSize; j++)
 					numberCount[i*j]++;
-
+			------------------------------------ */
+			
+			//-------- The new way -----------------------
+			//Add new numbers to the number count for the next size
+			for (int i=1; i<currentSize; i++)
+				numberCount[i*currentSize]+=2;
+			numberCount[currentSize*currentSize]++;
+			//-------------------------------------------
 			
 			//Reset the number frequency counters
 			occurFrequent=0;	//Number of occurrences of the most frequent number in the table
